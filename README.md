@@ -69,7 +69,7 @@ blockchains, and will gradually release the source codes for each blockchain.
 
 
 ## Installation
-To use the OKX Web3 Wallet SDK, install the core packages and the specific coin packages you need:
+To use the OKX Web3 Wallet SDK, install the crypto packages and the specific coin packages you need:
 
 ```shell
 # Core packages (required for all coins)
@@ -286,12 +286,6 @@ func SignEip1559Transaction(chainId *big.Int, tx *types.Transaction, prvKey *ecd
 ```
 
 For more detailed examples and usage instructions for each supported blockchain, please refer to the documentation in the respective coin-specific package.
-
-
-## Example
-
-For specific usage examples of each coin type, please refer to the corresponding test files. Remember to replace the
-placeholder private key with your own private key, which is generally in hex format.
 
 ## Feedback and Support
 
