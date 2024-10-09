@@ -59,7 +59,7 @@ blockchains, and will gradually release the source codes for each blockchain.
 | Zkspace  | ✅                 | ✅                    | ✅                   |
 | Zksync   | ✅                 | ✅                    | ✅                   |
 
-*BTC: Supports Supports BRC20-related functions, including inscription creation, BRC20 buying and selling.
+* BTC: Supports Supports BRC20-related functions, including inscription creation, BRC20 buying and selling.
 
 ## Main modules
 
