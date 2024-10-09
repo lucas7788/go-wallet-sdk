@@ -97,6 +97,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/btcsuite/btcd/btcec"
+	btcec2 "github.com/btcsuite/btcd/btcec/v2"
 	"github.com/decred/dcrd/dcrec/secp256k1/v4"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
@@ -104,7 +105,6 @@ import (
 	"github.com/okx/go-wallet-sdk/crypto/bip32"
 	"github.com/okx/go-wallet-sdk/util"
 	"github.com/tyler-smith/go-bip39"
-	btcec2 "github.com/btcsuite/btcd/btcec/v2"
 	"math/big"
 )
 
@@ -138,6 +138,14 @@ func main() {
 	//02a501a1622ecdbdca2ff9ae36dfcf58603006e8fd5ddd4809e8b8b9b8a4cf9f8b
 	signedTx, err := SignTransaction(txJson, derivePrivateKey)
 	fmt.Println("signed tx:", signedTx)
+	prvBytes, err := hex.DecodeString(derivePrivateKey)
+	if err != nil {
+		panic(err)
+	}
+	prv, _ := btcec2.PrivKeyFromBytes(prvBytes)
+	sigData, err := ethereum.SignEthTypeMessage(hex.EncodeToString([]byte("data")), prv, true)
+	err = ethereum.VerifySignMsg(sigData, hex.EncodeToString([]byte("data")), newAddress, true)
+	fmt.Println("verify signed data:", err == nil)
 }
 
 func GenerateMnemonic() (string, error) {
